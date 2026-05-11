@@ -12,12 +12,14 @@ Smart-grid load forecasting for Germany (2015-2019) using weather, renewable gen
 
 Raw data lives in data/raw:
 
-- data/raw/time_series_60min_singleindex.csv (https://data.open-power-system-data.org/time_series/2020-10-06)
-- data/raw/weather_data.csv (https://data.open-power-system-data.org/weather_data/latest/)
+- data/raw/time_series_60min_singleindex.csv 
+- data/raw/weather_data.csv 
 
 Processed and interim datasets should go to data/processed and data/interim.
 
-Data sources are based on Open Power System Data (OPSD) time series and weather data (see docs for details).
+**Data sources are based on Open Power System Data (OPSD) (https://open-power-system-data.org/):**
+- time series (https://data.open-power-system-data.org/time_series/2020-10-06)
+- weather data (https://data.open-power-system-data.org/weather_data/latest/).
 
 ## Repository structure
 
