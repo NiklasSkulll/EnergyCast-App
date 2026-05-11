@@ -219,3 +219,7 @@ __marimo__/
 
 # Data files
 data/*/*.csv
+
+# Serena
+.serena/cache/
+.serena/project.local.yml
