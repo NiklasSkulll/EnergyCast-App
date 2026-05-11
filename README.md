@@ -21,14 +21,26 @@ Processed and interim datasets should go to data/processed and data/interim.
 - time series (https://data.open-power-system-data.org/time_series/2020-10-06)
 - weather data (https://data.open-power-system-data.org/weather_data/latest/).
 
-## Repository structure
+## Folder structure
 
-- app: placeholder for a future app or dashboard
-- data: raw, interim, and processed datasets
-- docs: project plan and QUA3CK process description
-- models: trained models and artifacts
-- notebooks: QUA3CK phase notebooks
-- src: reusable code (currently empty)
+```text
+EnergyCast-App/
+├─ .serena/                 # Serena project config, cache, and memories
+├─ app/                     # Placeholder for a future app or dashboard
+├─ data/
+│  ├─ raw/                  # Original datasets
+│  │  ├─ time_series_60min_singleindex.csv
+│  │  └─ weather_data.csv
+│  ├─ interim/              # Intermediate processing outputs
+│  └─ processed/            # Cleaned and feature-engineered data
+├─ docs/                    # Project docs and methodology notes
+├─ models/                  # Trained models and artifacts
+├─ notebooks/               # QUA3CK phase notebooks
+├─ src/                     # Reusable Python modules (currently empty)
+├─ LICENSE
+├─ README.md
+└─ requirements.txt
+```
 
 ## Setup
 
@@ -68,6 +80,12 @@ jupyter lab
 
 - Project plan: [docs/Project_plan_and_structure.md](docs/Project_plan_and_structure.md)
 - QUA3CK overview: [docs/QUACK_process_model.md](docs/QUACK_process_model.md)
+- DIG framework notes: [docs/DIG_framework.md](docs/DIG_framework.md)
+- Serena setup: [docs/Serena_setup.md](docs/Serena_setup.md)
+
+## Tooling
+
+- Serena is configured for this repo in .serena/project.yml. Use it for indexing and symbol-based navigation.
 
 ## Contributing
 
@@ -75,4 +93,4 @@ If you add code to src, keep functions small and reusable, and add notebook refe
 
 ## License
 
-No license file is present. Add one if you plan to distribute this project.
+MIT License. See [LICENSE](LICENSE).
