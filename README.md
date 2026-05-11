@@ -1,4 +1,4 @@
-#+ EnergyCast-App
+# EnergyCast-App
 
 Smart-grid load forecasting for Germany (2015-2019) using weather, renewable generation, calendar effects, and historical demand. This repository follows the QUA3CK process model (Question, Understanding, Algorithms, Conclude, Knowledge transfer) and is structured around notebook phases.
 
@@ -12,8 +12,8 @@ Smart-grid load forecasting for Germany (2015-2019) using weather, renewable gen
 
 Raw data lives in data/raw:
 
-- data/raw/time_series_60min_singleindex.csv
-- data/raw/weather_data.csv
+- data/raw/time_series_60min_singleindex.csv (https://data.open-power-system-data.org/time_series/2020-10-06)
+- data/raw/weather_data.csv (https://data.open-power-system-data.org/weather_data/latest/)
 
 Processed and interim datasets should go to data/processed and data/interim.
 
