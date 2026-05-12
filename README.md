@@ -19,7 +19,7 @@ Processed and interim datasets should go to data/processed and data/interim.
 
 **Data sources are based on Open Power System Data (OPSD) (https://open-power-system-data.org/):**
 - time series (https://data.open-power-system-data.org/time_series/2020-10-06)
-- weather data (https://data.open-power-system-data.org/weather_data/latest/).
+- weather data (https://data.open-power-system-data.org/weather_data/latest/)
 
 ## Folder structure
 
