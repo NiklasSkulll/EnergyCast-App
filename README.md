@@ -1,4 +1,4 @@
-# EnergyCast-App
+# ⚡EnergyCast-App
 
 Smart-grid load forecasting for Germany (2015-2019) using weather, renewable generation, calendar effects, and historical demand. This repository follows the QUA3CK process model (Question, Understanding, Algorithms, Conclude, Knowledge transfer) and is structured around notebook phases.
 
