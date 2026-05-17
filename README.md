@@ -1,6 +1,14 @@
 # ⚡EnergyCast-App
 
-Smart-grid load forecasting for Germany (2015-2019) using weather, renewable generation, calendar effects, and historical demand. This repository follows the QUA3CK process model (Question, Understanding, Algorithms, Conclude, Knowledge transfer) and is structured around notebook phases.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org/)
+[![Plotly](https://img.shields.io/badge/Plotly-Visualization-3F4F75.svg)](https://plotly.com/python/)
+[![uv](https://img.shields.io/badge/uv-Environment%20Manager-5F9EA0.svg)](https://github.com/astral-sh/uv)
+
+---
+
+Smart-grid load forecasting for Germany (2015-2019) using weather, renewable generation, calendar effects, and historical demand. This repository follows the QUA3CK process model (Question, Understanding, Algorithms, Conclude, Knowledge transfer) and is structured around phase notebooks.
 
 ## Project goals
 
@@ -10,16 +18,15 @@ Smart-grid load forecasting for Germany (2015-2019) using weather, renewable gen
 
 ## Data
 
-Raw data lives in data/raw:
-
-- data/raw/time_series_60min_singleindex.csv 
-- data/raw/weather_data.csv 
+**Raw data lives in data/raw:**
+- data/raw/time_series_60min_singleindex.csv
+- data/raw/weather_data.csv
 
 Processed and interim datasets should go to data/processed and data/interim.
 
-**Data sources are based on Open Power System Data (OPSD) (https://open-power-system-data.org/):**
-- time series (https://data.open-power-system-data.org/time_series/2020-10-06)
-- weather data (https://data.open-power-system-data.org/weather_data/latest/)
+**Data sources (Open Power System Data):**
+- Time series: https://data.open-power-system-data.org/time_series/2020-10-06
+- Weather data: https://data.open-power-system-data.org/weather_data/latest/
 
 ## Folder structure
 
@@ -36,24 +43,23 @@ EnergyCast-App/
 ├─ docs/                    # Project docs and methodology notes
 ├─ models/                  # Trained models and artifacts
 ├─ notebooks/               # QUA3CK phase notebooks
-├─ src/                     # Reusable Python modules (currently empty)
+├─ src/                     # Reusable Python modules
 ├─ LICENSE
 ├─ README.md
-└─ requirements.txt
+└─ pyproject.toml
 ```
 
-## Setup
+## Setup (uv)
 
-1. Create and activate a virtual environment.
-2. Install dependencies.
+Use uv for environment and dependency management:
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+uv venv
+uv sync
+uv run jupyter lab
 ```
 
-If requirements.txt is still empty, add the packages you use in notebooks (typical: pandas, numpy, scikit-learn, matplotlib, seaborn).
+Select the .venv kernel when prompted in Jupyter.
 
 ## Usage
 
@@ -65,16 +71,12 @@ Run the notebooks in order:
 4. notebooks/04_C_Phase.ipynb
 5. notebooks/05_K_Phase.ipynb
 
-```bash
-jupyter lab
-```
-
 ## Modeling approach
 
 - Target: hourly electricity load in Germany.
 - Features: weather (temperature, solar radiation), renewables (wind/solar generation), calendar effects, and lagged load features.
 - Metrics: MAE, RMSE, sMAPE, and R2.
-- Splits: time-based (e.g., train 2015-2017, validate 2018, test 2019).
+- Splits: time-based (train 2015-2017, validate 2018, test 2019).
 
 ## Documentation
 
@@ -85,11 +87,13 @@ jupyter lab
 
 ## Tooling
 
-- Serena is configured for this repo in .serena/project.yml. Use it for indexing and symbol-based navigation.
+- Serena is configured in .serena/project.yml for indexing and symbol navigation.
 
 ## Contributing
 
-If you add code to src, keep functions small and reusable, and add notebook references where they are used.
+- Keep functions small and reusable.
+- Add notebook references where code is used.
+- Do not write to data/ unless explicitly requested.
 
 ## License
 
