@@ -24,10 +24,10 @@ The QUA3CK model is an iterative process for developing ML solutions. It stands 
 
 ## Detailed overview of the AI tools used in each phase
 
-| **Phase**   | **AI-Tool**                                                                        | **Purpose**                                                                                              | **Prompt/Use Case**                                                           |
-| ----------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **Phase Q** | ChatGPT 5.5 Thinking (OpenAI, 2026), GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025) | Data set research, concept of the Q phase in a Jupyter notebook, creation of `AGENTS.md` and `README.de` | view [docs/prompts/01_prompts_phase_q.md](docs/prompts/01_prompts_phase_q.md) |
-| **Phase U** |                                                                                    |                                                                                                          |                                                                               |
+| **Phase**   | **AI-Tool**                                                                                                             | **Purpose**                                                                                              | **Prompt/Use Case**                                                           |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Phase Q** | ChatGPT 5.5 Thinking (OpenAI, 2026), GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025), Claude Sonnet 4.6 (Anthropic, 2026) | Data set research, concept of the Q phase in a Jupyter notebook, creation of `AGENTS.md` and `README.de` | view [docs/prompts/01_prompts_phase_q.md](docs/prompts/01_prompts_phase_q.md) |
+| **Phase U** |                                                                                                                         |                                                                                                          |                                                                               |
 
 ---
 
@@ -44,9 +44,9 @@ The datasets listed below were used as part of the project. All of them are publ
 
 ## Bibliography
 
+- Anthropic. (2026). _Claude Sonnet 4.6_ [Large language model]. https://www.anthropic.com/claude/sonnet
 - OpenAI. (2025). _GPT-5.2-Codex_ [Large language model]. GitHub Copilot in Visual Studio Code. https://openai.com/index/introducing-gpt-5-2-codex/
 - OpenAI. (2026). _ChatGPT 5.5 Thinking_ [Large language model]. https://chatgpt.com/
 - Open Power System Data. (n.d.). _Open Power System Data: A platform for open data of the European power system_. https://open-power-system-data.org/
 - Open Power System Data. (2020a). _Data package time series_ (Version 2020-10-06) [Data set]. https://doi.org/10.25832/time_series/2020-10-06
 - Open Power System Data. (2020b). _Data package weather data_ (Version 2020-09-16) [Data set]. https://doi.org/10.25832/weather_data/2020-09-16
-
