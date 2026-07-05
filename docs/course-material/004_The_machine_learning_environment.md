@@ -26,7 +26,7 @@
 
 ## 1 Why is it important to understand the ML environment?
 
-Before selecting an algorithm, you should understand the conceptual framework you’re working within. The field of machine learning is vast: supervised and unsupervised learning, batch and online learning, instance-based and model-based methods - and on top of that, there are terms like overfitting, underfitting, validation dataset and hyperparameters, which are assumed to be familiar in virtually every subsequent file.
+Before selecting an algorithm, you should understand the conceptual framework you're working within. The field of machine learning is vast: supervised and unsupervised learning, batch and online learning, instance-based and model-based methods - and on top of that, there are terms like overfitting, underfitting, validation dataset and hyperparameters, which are assumed to be familiar in virtually every subsequent file.
 
 **Note:** This file intentionally contains very little code. The focus is on the map, not the toolbox - the tools will be covered in the following files.
 
@@ -58,7 +58,7 @@ Machine learning can easily be described as the science (and art) of programming
 
 **Take spam filters as an example:** The task T is to detect new spam emails; the experience E consists of the training examples labeled as spam or ham; and the performance metric P could be the proportion of correctly classified emails (accuracy). The part of the system that learns and makes predictions is called the model.
 
-**Important:** Simply storing data does not constitute machine learning. A computer that downloads a complete copy of Wikipedia will know more characters afterward, but it won’t get any better at any specific task—it simply lacks the task T.
+**Important:** Simply storing data does not constitute machine learning. A computer that downloads a complete copy of Wikipedia will know more characters afterward, but it won't get any better at any specific task—it simply lacks the task T.
 
 **The key difference from traditional programming:**
 - Instead of writing rules by hand and tweaking them for every exception, the ML system derives patterns directly from the data.
@@ -179,7 +179,7 @@ Since an ML system essentially consists of a model and training data, sources of
 | **Problem**                                      | **Brief Description**                                                                                                                                                                                                                                                                                      |
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Insufficient amount of data                      | Most methods require thousands to millions of examples; for complex tasks such as image or speech recognition, even a simple algorithm can perform well with enough data ("the outrageous effectiveness of data")                                                                                          |
-| Non-representative training data / Sampling bias | Training data must reflect the cases to which the model will later be generalized - otherwise, systematic biases will arise (a classic example: the 1936 Literary Digest poll, which incorrectly predicted Roosevelt’s victory because the sample and response rate overrepresented wealthier respondents) |
+| Non-representative training data / Sampling bias | Training data must reflect the cases to which the model will later be generalized - otherwise, systematic biases will arise (a classic example: the 1936 Literary Digest poll, which incorrectly predicted Roosevelt's victory because the sample and response rate overrepresented wealthier respondents) |
 | Poor data quality                                | Errors, outliers and noise make it difficult for the system to distinguish true patterns from randomness; a large part of data science work involves cleaning such data                                                                                                                                    |
 | Irrelevant characteristics                       | Too many useless features or a lack of relevant ones will degrade the results ("garbage in, garbage out"); the solution is targeted feature engineering (selection, extraction, and creation of new features)                                                                                              |
 

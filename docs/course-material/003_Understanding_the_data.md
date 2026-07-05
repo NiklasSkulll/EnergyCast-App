@@ -2,7 +2,7 @@
 
 > **Summary:**
 >
-> This file explores the _U phase_ of the QUA³CK model in greater depth: _Understanding the Data_. The focus is on how raw data is systematically examined, cleaned, visualized and prepared before the actual modeling begins. It is precisely at this stage that it is often determined whether a machine learning project will later yield useful results or simply fail spectacularly, like so many of humanity’s promising digital projects.
+> This file explores the _U phase_ of the QUA³CK model in greater depth: _Understanding the Data_. The focus is on how raw data is systematically examined, cleaned, visualized and prepared before the actual modeling begins. It is precisely at this stage that it is often determined whether a machine learning project will later yield useful results or simply fail spectacularly, like so many of humanity's promising digital projects.
 
 **ToC:**
 - [1 Why is "Understanding the Data" so important?](#1-why-is--understanding-the-data-so-important)
