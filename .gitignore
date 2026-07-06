@@ -220,3 +220,6 @@ __marimo__/
 # Serena
 .serena/cache/
 .serena/project.local.yml
+
+# Checkpoints
+data/processed/checkpoints
