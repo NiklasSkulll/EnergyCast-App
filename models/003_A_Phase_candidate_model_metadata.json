@@ -1,6 +1,6 @@
 {
   "checkpoint_dir": "data/processed/checkpoints",
-  "created_at_utc": "2026-07-06T11:48:32+00:00",
+  "created_at_utc": "2026-07-06T12:05:37+00:00",
   "feature_columns": [
     "hour_sin",
     "hour_cos",
