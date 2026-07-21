@@ -1,11 +1,11 @@
 # ⚡EnergyCast-App
 
-[![Python](https://img.shields.io/badge/Python-3.11-%231D9FD7?style=plastic&logo=python&logoColor=%23FF6600)](pyproject.toml)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-%23F37626?style=plastic&logo=jupyter&logoColor=%23FF6600)](https://jupyter.org/)
-[![uv](https://img.shields.io/badge/uv-Environment%20Manager-%23DE5FE9?style=plastic&logo=uv&logoColor=%23FF6600)](uv.lock)
-[![Plotly](https://img.shields.io/badge/Plotly-Visualization-%237A76FF?style=plastic&logo=plotly&logoColor=%23FF6600)](https://plotly.com/python/)
-[![GitLFS](https://img.shields.io/badge/Git%20LFS-Storing%20large%20Files-%23F64935?style=plastic&logo=gitlfs&logoColor=%23FF6600)](https://git-lfs.com/)
-[![Licence: MIT](https://img.shields.io/badge/Licence-MIT-%23FFFF66?style=plastic&logo=opensourceinitiative&logoColor=%23FF6600)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11-%231D9FD7?style=plastic&logo=python&logoColor=%231D9FD7)](pyproject.toml)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-%23F37626?style=plastic&logo=jupyter&logoColor=%23F37626)](https://jupyter.org/)
+[![uv](https://img.shields.io/badge/uv-Environment%20Manager-%23DE5FE9?style=plastic&logo=uv&logoColor=%23DE5FE9)](uv.lock)
+[![Plotly](https://img.shields.io/badge/Plotly-Visualization-%237A76FF?style=plastic&logo=plotly&logoColor=%237A76FF)](https://plotly.com/python/)
+[![GitLFS](https://img.shields.io/badge/Git%20LFS-Storing%20large%20Files-%23F64935?style=plastic&logo=gitlfs&logoColor=%23F64935)](https://git-lfs.com/)
+[![Licence: MIT](https://img.shields.io/badge/Licence-MIT-%23FFFF66?style=plastic&logo=opensourceinitiative&logoColor=%23FFFF66)](LICENSE)
 
 ---
 
