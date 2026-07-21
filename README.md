@@ -1,12 +1,10 @@
 # ⚡EnergyCast-App
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org/)
-[![Plotly](https://img.shields.io/badge/Plotly-Visualization-3F4F75.svg)](https://plotly.com/python/)
-[![uv](https://img.shields.io/badge/uv-Environment%20Manager-5F9EA0.svg)](https://github.com/astral-sh/uv)
-
-[![Licence: MIT](https://img.shields.io/badge/Licence-MIT-%23FFFF66?style=plastic&logo=opensourceinitiative&logoColor=%FF6600)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11-%231D9FD7?style=plastic&logo=python&logoColor=%23FF6600)](pyproject.toml)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-%23F37626?style=plastic&logo=jupyter&logoColor=%23FF6600)](https://jupyter.org/)
+[![uv](https://img.shields.io/badge/uv-Environment%20Manager-%23DE5FE9?style=plastic&logo=uv&logoColor=%23FF6600)](uv.lock)
+[![Plotly](https://img.shields.io/badge/Plotly-Visualization-%237A76FF?style=plastic&logo=plotly&logoColor=%23FF6600)](https://plotly.com/python/)
+[![Licence: MIT](https://img.shields.io/badge/Licence-MIT-%23FFFF66?style=plastic&logo=opensourceinitiative&logoColor=%23FF6600)](LICENSE)
 
 ---
 
