@@ -6,6 +6,8 @@
 [![Plotly](https://img.shields.io/badge/Plotly-Visualization-3F4F75.svg)](https://plotly.com/python/)
 [![uv](https://img.shields.io/badge/uv-Environment%20Manager-5F9EA0.svg)](https://github.com/astral-sh/uv)
 
+[!https://img.shields.io/badge/Licence-MIT?style=plastic&logo=opensourceinitiative&logoColor=%2339BE6B&color=%23FFFF66](LICENSE)
+
 ---
 
 Smart-grid load forecasting for Germany (2015-2019) using weather, renewable generation, calendar effects, and historical demand. This repository follows the QUA3CK process model (Question, Understanding, Algorithms, Conclude, Knowledge transfer) and is structured around phase notebooks.
