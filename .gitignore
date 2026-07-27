@@ -223,3 +223,6 @@ __marimo__/
 
 # Checkpoints
 data/processed/checkpoints
+
+# Reference Repo
+reference-repo/

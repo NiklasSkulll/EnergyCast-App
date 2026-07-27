@@ -5,7 +5,7 @@
 [![uv](https://img.shields.io/badge/uv-Environment%20Manager-%23DE5FE9?style=plastic&logo=uv&logoColor=%23DE5FE9&labelColor=%23282C33)](uv.lock)
 [![Plotly](https://img.shields.io/badge/Plotly-Visualization-%237A76FF?style=plastic&logo=plotly&logoColor=%237A76FF&labelColor=%23282C33)](https://plotly.com/python/)
 [![GitLFS](https://img.shields.io/badge/Git%20LFS-Storing%20large%20Files-%23F64935?style=plastic&logo=gitlfs&logoColor=%23F64935&labelColor=%23282C33)](https://git-lfs.com/)
-[![Licence: MIT](https://img.shields.io/badge/Licence-MIT-%23FFFF66?style=plastic&logo=opensourceinitiative&logoColor=%23FFFF66&labelColor=%23282C33)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-%23FFFF66?style=plastic&logo=opensourceinitiative&logoColor=%23FFFF66&labelColor=%23282C33)](LICENSE)
 
 ---
 

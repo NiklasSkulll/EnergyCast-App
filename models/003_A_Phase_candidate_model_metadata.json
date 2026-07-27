@@ -1,6 +1,17 @@
 {
-  "checkpoint_dir": "data/processed/checkpoints",
-  "created_at_utc": "2026-07-06T12:05:37+00:00",
+  "best_params": {
+    "model__l2_regularization": 0.0,
+    "model__learning_rate": 0.05,
+    "model__max_iter": 400,
+    "model__max_leaf_nodes": 31
+  },
+  "course_alignment": [
+    "004: supervised learning includes regression for numerical targets",
+    "005: classification metrics are not used as primary metrics for this continuous target",
+    "006: regression training, regularization and learning-curve diagnostics apply",
+    "007: LinearSVR/SVR and regression metric guidance support regression candidates"
+  ],
+  "created_at_utc": "2026-07-27T14:23:57+00:00",
   "feature_columns": [
     "hour_sin",
     "hour_cos",
@@ -25,21 +36,60 @@
     "DE_wind_generation_actual_lag1h",
     "DE_wind_generation_actual_lag24h"
   ],
-  "high_load_threshold_mw": 64472.5,
-  "log_path": "logs/2026-07-06_A_Phase.log",
+  "feature_set": "full lagged feature set",
   "metrics": {
-    "accuracy": 0.9864155251141552,
-    "cv_mean_f1": 0.9748549071936273,
-    "f1": 0.9773721239779426,
-    "precision": 0.9749620637329287,
-    "recall": 0.9797941288600839,
-    "roc_auc": 0.9991780635211346
+    "cv_mean_sMAPE_pct": 0.814336001490437,
+    "cv_std_sMAPE_pct": 0.1100173591202323,
+    "validation_MAE_MW": 412.2464819271735,
+    "validation_R2": 0.9968564716980609,
+    "validation_RMSE_MW": 553.3418523297873,
+    "validation_sMAPE_pct": 0.741950630274517
   },
+  "model_path": "models/003_A_Phase_candidate_model.joblib",
   "notebook": "003_A_Phase.ipynb",
+  "reference_validation_metrics": [
+    {
+      "MAE_MW": 1577.0950091575091,
+      "R2": 0.9589680842128245,
+      "RMSE_MW": 1999.0121232409945,
+      "prediction_column": "DE_load_forecast_entsoe_transparency",
+      "reference": "ENTSO-E day-ahead forecast",
+      "sMAPE_pct": 2.7964257419349456,
+      "valid_2018_rows": 8736
+    },
+    {
+      "MAE_MW": 2555.678881278539,
+      "R2": 0.8044643734258075,
+      "RMSE_MW": 4364.131023633268,
+      "prediction_column": "load_lag_168h",
+      "reference": "168h weekly naive persistence",
+      "sMAPE_pct": 4.543100615243632,
+      "valid_2018_rows": 8760
+    },
+    {
+      "MAE_MW": 4607.900228310502,
+      "R2": 0.49442272546765054,
+      "RMSE_MW": 7017.43832482296,
+      "prediction_column": "load_lag_24h",
+      "reference": "24h naive persistence",
+      "sMAPE_pct": 8.368368767169194,
+      "valid_2018_rows": 8760
+    }
+  ],
   "reserved_test_used_for_selection": false,
   "reserved_test_year": 2019,
-  "selected_model": "XGBoost GPU-capable",
-  "selection_metric": "f1",
-  "tie_breaker": "roc_auc",
+  "selected_model": "HistGradientBoosting regressor - full lagged feature set",
+  "selection_metric": "sMAPE_pct",
+  "target": "DE_load_actual_entsoe_transparency",
+  "target_unit": "MW",
+  "task_type": "regression",
+  "tie_breaker": "RMSE_MW",
+  "train_years": [
+    2015,
+    2016,
+    2017
+  ],
+  "training_summary_path": "data/processed/003_A_Phase_training_summary.csv",
+  "validation_metrics_path": "data/processed/003_A_Phase_validation_metrics.csv",
   "validation_year": 2018
 }
