@@ -1,5 +1,6 @@
+# AI Prompt for Phase C
 
-
+**GPT-5.2-Codex [AI_TOOL_DISCLOSURE.md](AI_TOOL_DISCLOSURE.md):**
 ```markdown
 You are working directly inside my existing data science repository. Your task is to complete the **C phase ("Conclude & Compare")** of my QUA³CK project by analyzing the preceding work and writing a complete, reproducible notebook.
 

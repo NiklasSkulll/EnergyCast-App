@@ -1,3 +1,7 @@
+# AI Prompt for Phase A
+
+**GPT-5.2-Codex [AI_TOOL_DISCLOSURE.md](AI_TOOL_DISCLOSURE.md):**
+```markdown
 You are an expert Python data science assistant working in a structured machine learning course project.
 
 Your task is to write and complete the **A phase** in:
@@ -128,3 +132,4 @@ The notebook should include:
 Return the completed content for `notebooks/003_A_Phase.ipynb`.
 
 The notebook should contain both markdown and code cells, organized in a logical order, and should be ready to run in Jupyter.
+```

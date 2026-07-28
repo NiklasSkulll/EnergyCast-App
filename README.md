@@ -1,3 +1,5 @@
+<div align="center">
+
 # ⚡EnergyCast-App
 
 [![Python](https://img.shields.io/badge/Python-3.11-%231D9FD7?style=plastic&logo=python&logoColor=%231D9FD7&labelColor=%23282C33)](pyproject.toml)
@@ -7,9 +9,11 @@
 [![GitLFS](https://img.shields.io/badge/Git%20LFS-Storing%20large%20Files-%23F64935?style=plastic&logo=gitlfs&logoColor=%23F64935&labelColor=%23282C33)](https://git-lfs.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-%23FFFF66?style=plastic&logo=opensourceinitiative&logoColor=%23FFFF66&labelColor=%23282C33)](LICENSE)
 
----
-
 Smart-grid load forecasting for Germany (2015-2019) using weather, renewable generation, calendar effects, and historical demand. This repository follows the QUA3CK process model (Question, Understanding, Algorithms, Conclude, Knowledge transfer) and is structured around phase notebooks.
+
+</div>
+
+---
 
 ## Project goals
 
