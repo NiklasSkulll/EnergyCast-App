@@ -1,5 +1,7 @@
 # AI Prompt for Phase K
 
+## Initial prompt for creating the K Phase
+
 **GPT-5.2-Codex [AI_TOOL_DISCLOSURE.md](AI_TOOL_DISCLOSURE.md):**
 ```markdown
 You have full access to my codebase. Your task is to complete **Phase K of the QUACK workflow** and implement the corresponding **Streamlit application**.
@@ -200,4 +202,14 @@ At the end, provide a concise implementation report containing:
 7. The exact command for launching the Streamlit app.
 
 Work autonomously and make reasonable project-specific decisions based on the repository evidence. Do not stop at an analysis or implementation plan—the required output is a completed Phase K notebook and a working Streamlit implementation.
+```
+
+## Prompt for updating the README.md
+
+**GPT-5.2-Codex [AI_TOOL_DISCLOSURE.md](AI_TOOL_DISCLOSURE.md):**
+```markdown
+Look at my README.md. It got longer not updated. ANalyze my whole project and update my README.md file. Additionally: add explanaitions for using the project:
+- setup uv: from download to sync/run etc.
+- setup git lfs and pull the objects by first clone
+- start the app and stop the run
 ```
