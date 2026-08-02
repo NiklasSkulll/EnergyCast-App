@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>EnergyCast-App - Data Analytics und Big Data</title>
+        <!-- CSS -->
+        <style>
+            :root {
+	            /* Colors */
+	            --background-page: rgb(245, 245, 245);
+	            --background-code: rgba(200, 200, 200, 0.45);
+	
+	            --dark-gray: rgb(45, 45, 48);
+	            --dark-teal: rgb(8, 42, 46);
+	            --petrol-teal: rgb(0, 95, 115);
+	
+	            --highlight-violet: rgb(53, 40, 152);
+	            --highlight-green: rgb(21, 147, 78);
+	            --highlight-violet-soft: rgba(53, 40, 152, 0.08);
+	            --highlight-green-soft: rgba(21, 147, 78, 0.08);
+	            --highlight-neutral-soft: rgba(0, 95, 115, 0.07);
+	
+	            --border-footer: rgb(210, 210, 210);
+	            --border-content: rgb(210, 210, 210);
+	            --border-gray: rgb(200, 200, 200);
+	
+	            /* Font families */
+	            --font-sans: Arial, sans-serif;
+	            --font-mono:
+		            ui-monospace,
+		            "Cascadia Mono",
+		            "SFMono-Regular",
+		            Consolas,
+		            "Liberation Mono",
+		            "Courier New",
+		            monospace;
+	
+	            /* Body typography */
+	            --font-size-body: clamp(1rem, 2.1cqh, 1.3rem);
+	            --line-height-body: 1.45;
+	            --paragraph-spacing: 1.2cqh;
+	
+	            /* Font weights */
+	            --font-weight-normal: 400;
+	            --font-weight-bold: 700;
+	
+	            /* Presentation dimensions */
+	            --progress-height: 4px;
+	            --footer-height: max(6cqh, 42px);
+	            --slide-padding-top: 7cqh;
+	            --slide-padding-inline: 7cqw;
+	            --slide-padding-bottom: max(11cqh, calc(var(--footer-height) + 2cqh));
+	            --layout-gap: clamp(1rem, 2.4cqw, 2.5rem);
+	
+	            /* Footer */
+	            --font-size-footer: clamp(0.75rem, 1.6cqh, 0.95rem);
+	
+	            /* Cards and callouts */
+	            --component-radius: 8px;
+	            --component-padding: clamp(0.9rem, 1.8cqw, 1.6rem);
+	            --component-gap: clamp(0.75rem, 1.4cqw, 1.25rem);
+            }
+
+            *, *::before, *::after {
+	            box-sizing: border-box;
+            }
+
+            html, body, h1, h2, h3, p {
+	            margin: 0;
+	            padding: 0;
+            }
+
+            html, body {
+	            width: 100%;
+	            height: 100%;
+            }
+
+            body {
+	            display: flex;
+	            align-items: center;
+	            justify-content: center;
+	
+	            font-family: var(--font-sans);
+	            font-size: 1rem;
+	            line-height: var(--line-height-body);
+	            font-weight: var(--font-weight-normal);
+	            color: var(--dark-gray);
+	
+	            background-color: var(--dark-gray);
+	            text-align: left;
+	            overflow: hidden;
+            }
+
+            .presentation-stage {
+	            position: relative;
+
+	            width: min(100vw, 177.7778vh);
+	            height: min(100vh, 56.25vw);
+	            aspect-ratio: 16 / 9;
+
+	            container-name: presentation;
+	            container-type: size;
+
+	            background-color: var(--background-page);
+	            overflow: hidden;
+	            isolation: isolate;
+            }
+
+            strong, b {
+	            font-weight: var(--font-weight-bold);
+            }
+
+            h1, h2, h3 {
+	            color: var(--dark-teal);
+	            margin: 0 0 0.75cqh 0;
+	            letter-spacing: -0.02em;
+	            text-wrap: balance;
+	            font-weight: var(--font-weight-bold);
+            }
+
+            h1 {
+	            font-size: clamp(3.4rem, 9cqh, 6.2rem);
+	            line-height: 1.05;
+            }
+
+            h2 {
+	            font-size: clamp(1.9rem, 4.6cqh, 2.9rem);
+	            line-height: 1.05;
+            }
+
+            h3 {
+	            font-size: clamp(1.15rem, 2.6cqh, 1.6rem);
+	            line-height: 1.15;
+            }
+
+            p {
+	            margin: 0 0 var(--paragraph-spacing) 0;
+            }
+
+            p:last-child {
+	            margin-bottom: 0;
+            }
+
+            .slide {
+	            position: absolute;
+	            inset: 0;
+
+	            display: none;
+	            flex-direction: column;
+
+	            padding:
+		            var(--slide-padding-top)
+		            var(--slide-padding-inline)
+		            var(--slide-padding-bottom);
+
+	            background-color: var(--background-page);
+
+	            font-size: var(--font-size-body);
+	            overflow: hidden;
+            }
+
+            .slide.active {
+	            display: flex;
+            }
+
+            .slide-content {
+	            flex: 1;
+	            display: flex;
+	            flex-direction: column;
+	            justify-content: flex-start;
+	            min-height: 0;
+	            overflow: auto;
+            }
+
+            .slide-content.centered-content {
+	            justify-content: center;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+	            .slide.active {
+		            animation: slide-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+	            }
+
+	            @keyframes slide-enter {
+		            from {
+			            opacity: 0;
+			            transform: translateY(8px);
+		            }
+
+		            to {
+			            opacity: 1;
+			            transform: translateY(0);
+		            }
+	            }
+            }
+
+            .subtitle {
+	            color: var(--petrol-teal);
+	            font-weight: var(--font-weight-normal);
+	            font-size: clamp(1.05rem, 2.3cqh, 1.4rem);
+	            line-height: 1.35;
+	            margin: 0 0 2.4cqh 0;
+	            max-width: 72ch;
+            }
+
+            .title-closing-slide .slide-content {
+	            justify-content: center;
+	            align-items: flex-start;
+
+	            width: 100%;
+	            max-width: 78cqw;
+            }
+
+            .title-closing-slide h1, .title-closing-slide h2 {
+	            max-width: 18ch;
+	            margin-bottom: 1.2cqh;
+            }
+
+            .title-closing-slide .subtitle {
+	            max-width: 60ch;
+	            margin-bottom: 4cqh;
+            }
+
+            .presentation-data {
+	            display: grid;
+	            grid-template-columns:
+		            max-content
+		            minmax(0, 1fr);
+
+	            column-gap: 1.4cqw;
+	            row-gap: 0.7cqh;
+
+	            margin: 0;
+	            padding: 0;
+
+	            font-size: clamp(0.9rem, 1.8cqh, 1.1rem);
+	            line-height: 1.4;
+            }
+
+            .presentation-data dt {
+	            color: var(--dark-teal);
+	            font-weight: var(--font-weight-bold);
+            }
+
+            .presentation-data dd {
+	            margin: 0;
+	            color: var(--dark-gray);
+            }
+
+            .layout {
+	            display: grid;
+	
+	            width: 100%;
+	            min-width: 0;
+	            min-height: 0;
+	
+	            gap: var(--layout-gap);
+	            align-items: start;
+            }
+
+            .layout > * {
+	            min-width: 0;
+	            min-height: 0;
+            }
+
+            .layout-one-column {
+	            grid-template-columns: minmax(0, 1fr);
+            }
+
+            .layout-two-column {
+	            grid-template-columns:
+		            minmax(0, 1fr)
+		            minmax(0, 1fr);
+            }
+
+            .layout-two-column.layout-60-40 {
+	            grid-template-columns:
+		            minmax(0, 3fr)
+		            minmax(0, 2fr);
+            }
+
+            .layout-two-column.layout-40-60 {
+	            grid-template-columns:
+		            minmax(0, 2fr)
+		            minmax(0, 3fr);
+            }
+
+            .layout-column {
+	            min-width: 0;
+	            min-height: 0;
+            }
+
+            .layout-text-image {
+	            grid-template-columns:
+		            minmax(0, 1.25fr)
+		            minmax(0, 1fr);
+		
+	            align-items: center;
+            }
+
+            .layout-text {
+	            min-width: 0;
+	            align-self: center;
+            }
+
+            .layout-media {
+	            display: flex;
+	            align-items: center;
+	            justify-content: center;
+	
+	            min-width: 0;
+	            min-height: 0;
+            }
+
+            .layout-media figure {
+	            width: 100%;
+	            margin: 0;
+            }
+
+            .layout-media img {
+	            max-width: 100%;
+	            max-height: 45cqh;
+	            margin-inline: auto;
+            }
+
+            .layout-image-text {
+	            grid-template-columns:
+		            minmax(0, 1fr)
+		            minmax(0, 1.25fr);
+
+	            align-items: center;
+            }
+
+            @container presentation (max-width: 850px) {
+	            .layout-two-column, .layout-two-column.layout-60-40, .layout-two-column.layout-40-60, .layout-text-image, .layout-image-text {
+		            grid-template-columns: minmax(0, 1fr);
+	            }
+	
+	            .layout {
+		            gap: 2cqh;
+	            }
+	
+	            .layout-media img {
+		            max-height: 32cqh;
+	            }
+            }
+
+            .slide-content ul, .slide-content ol {
+	            margin: 0 0 1.6cqh 0;
+	            padding-left: 1.6em;
+            }
+
+            .slide-content li {
+	            margin-bottom: 0.6cqh;
+	            padding-left: 0.25em;
+            }
+
+            .slide-content li:last-child {
+	            margin-bottom: 0;
+            }
+
+            .slide-content li::marker {
+	            color: var(--petrol-teal);
+	            font-weight: var(--font-weight-bold);
+            }
+
+            .slide-content li > ul, .slide-content li > ol {
+	            margin-top: 0.6cqh;
+	            margin-bottom: 0;
+            }
+
+            .slide-content a {
+	            color: var(--petrol-teal);
+
+	            text-decoration-line: underline;
+	            text-decoration-thickness: 0.08em;
+	            text-underline-offset: 0.16em;
+
+	            transition: color 0.15s ease, text-decoration-color 0.15s ease;
+            }
+
+            .slide-content a:visited {
+	            color: var(--petrol-teal);
+            }
+
+            .slide-content a:hover {
+	            color: var(--dark-teal);
+            }
+
+            .slide-content a:focus-visible {
+	            color: var(--dark-teal);
+	            outline: 2px solid var(--petrol-teal);
+	            outline-offset: 3px;
+	            border-radius: 2px;
+            }
+
+            .slide-content img {
+	            display: block;
+	
+	            max-width: 100%;
+	            height: auto;
+	
+	            object-fit: contain;
+            }
+
+            .slide-content figure {
+	            margin: 0 0 1.6cqh 0;
+	            padding: 0;
+            }
+
+            .slide-content figure:last-child {
+	            margin-bottom: 0;
+            }
+
+            .slide-content figure img {
+	            margin-inline: auto;
+            }
+
+            .slide-content figcaption {
+	            max-width: 72ch;
+	            margin: 0.8cqh auto 0;
+	
+	            color: var(--dark-gray);
+	            font-size: clamp(0.75rem, 1.6cqh, 0.95rem);
+	            line-height: 1.4;
+	            text-align: center;
+	            opacity: 0.7;
+            }
+
+            .slide-content code {
+	            font-family: var(--font-mono);
+	            font-size: 0.9em;
+            }
+
+            .slide-content p code, .slide-content li code, .slide-content td code, .slide-content th code, .slide-content blockquote code {
+	            padding: 0.08em 0.35em;
+	
+	            background-color: var(--background-code);
+	            border-radius: 4px;
+	
+	            overflow-wrap: anywhere;
+            }
+
+            .slide-content pre {
+	            width: 100%;
+	            max-width: 100%;
+	
+	            margin: 0 0 1.6cqh 0;
+	            padding: 1.4cqh 1.2cqw;
+	
+	            border: 1px solid var(--border-gray);
+	            border-left: 4px solid var(--petrol-teal);
+	            border-radius: 6px;
+	
+	            background-color: var(--background-code);
+	            color: var(--dark-gray);
+	
+	            font-family: var(--font-mono);
+	            font-size: clamp(0.75rem, 1.65cqh, 1rem);
+	            line-height: 1.5;
+	
+	            white-space: pre;
+	            tab-size: 4;
+	            overflow: auto;
+            }
+
+            .slide-content pre:last-child {
+	            margin-bottom: 0;
+            }
+
+            .slide-content pre code {
+	            padding: 0;
+
+	            background: none;
+	            border-radius: 0;
+	
+	            color: inherit;
+	            font-family: inherit;
+	            font-size: inherit;
+	
+	            overflow-wrap: normal;
+            }
+
+            .table-wrapper {
+	            width: 100%;
+	            max-width: 100%;
+	
+	            margin: 0 0 1.6cqh 0;
+	            overflow-x: auto;
+            }
+
+            .table-wrapper:last-child {
+	            margin-bottom: 0;
+            }
+
+            .slide-content table {
+	            width: 100%;
+	            border-collapse: collapse;
+	
+	            color: var(--dark-gray);
+	            font-size: clamp(0.8rem, 1.75cqh, 1.05rem);
+	            line-height: 1.4;
+            }
+
+            .slide-content table caption {
+	            margin-bottom: 0.8cqh;
+	
+	            color: var(--dark-gray);
+	            font-size: clamp(0.75rem, 1.6cqh, 0.95rem);
+	            line-height: 1.4;
+	            text-align: left;
+	            opacity: 0.7;
+            }
+
+            .slide-content th, .slide-content td {
+	            padding: 0.8cqh 0.8cqw;
+    
+	            border-bottom: 1px solid var(--border-content);
+	
+	            text-align: left;
+	            vertical-align: top;
+            }
+
+            .slide-content thead th {
+	            color: var(--dark-teal);
+	            font-weight: var(--font-weight-bold);
+
+	            border-bottom: 2px solid var(--petrol-teal);
+            }
+
+            .slide-content tbody th {
+	            color: var(--dark-teal);
+	            font-weight: var(--font-weight-bold);
+            }
+
+            .slide-content tbody tr:last-child th, .slide-content tbody tr:last-child td {
+	            border-bottom: 0;
+            }
+
+            .slide-content blockquote {
+	            margin: 0 0 1.6cqh 0;
+	            padding: 0.6cqh 0 0.6cqh 1.2cqw;
+	
+	            border-left: 4px solid var(--petrol-teal);
+	
+	            color: var(--dark-teal);
+	            font-size: clamp(1rem, 2.1cqh, 1.3rem);
+	            line-height: 1.45;
+            }
+
+            .slide-content blockquote:last-child {
+	            margin-bottom: 0;
+            }
+
+            .slide-content blockquote p {
+	            margin-bottom: 0.8cqh;
+            }
+
+            .slide-content blockquote cite {
+	            display: block;
+	            margin-top: 0.8cqh;
+	
+	            color: var(--dark-gray);
+	            font-size: clamp(0.75rem, 1.6cqh, 0.95rem);
+	            font-style: normal;
+	            opacity: 0.7;
+            }
+
+            .slide-content hr {
+	            width: 100%;
+	
+	            margin: 2.4cqh 0;
+	
+	            border: 0;
+	            border-top: 1px solid var(--border-content);
+            }
+
+            .component-symbol {
+	            display: inline-flex;
+	            align-items: center;
+	            justify-content: center;
+	
+	            flex: 0 0 auto;
+	
+	            width: 2rem;
+	            height: 2rem;
+	
+	            border: 1px solid currentColor;
+	            border-radius: 50%;
+	
+	            color: var(--petrol-teal);
+	
+	            font-family: var(--font-sans);
+	            font-size: 1rem;
+	            font-weight: var(--font-weight-bold);
+	            line-height: 1;
+            }
+
+            .card-grid {
+	            display: grid;
+	
+	            width: 100%;
+	            min-width: 0;
+	
+	            gap: var(--layout-gap);
+	            align-items: stretch;
+            }
+
+            .card-grid-two {
+	            grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .card-grid-three {
+	            grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .card-grid-four {
+	            grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .metric-card-grid {
+	            margin-bottom: clamp(1.25rem, 3.2cqh, 2.4rem);
+            }
+
+            .card {
+	            --card-accent: var(--petrol-teal);
+	
+	            position: relative;
+	
+	            display: flex;
+	            flex-direction: column;
+	            align-items: flex-start;
+	
+	            min-width: 0;
+	            min-height: 0;
+	
+	            padding: var(--component-padding);
+	
+	            border: 1px solid var(--border-content);
+	            border-top: 3px solid var(--card-accent);
+	            border-radius: var(--component-radius);
+	
+	            background-color: var(--background-page);
+            }
+
+            .card-header {
+	            display: flex;
+	            align-items: center;
+
+	            width: 100%;
+	            min-width: 0;
+
+	            gap: 0.75rem;
+	            margin-bottom: 1.2cqh;
+            }
+
+            .card .component-symbol {
+	            color: var(--card-accent);
+            }
+
+            .card h3 {
+	            margin: 0;
+	            color: var(--dark-teal);
+            }
+
+            .card-content {
+	            width: 100%;
+	            min-width: 0;
+            }
+
+            .card-content > :last-child {
+	            margin-bottom: 0;
+            }
+
+            .card-violet {
+	            --card-accent: var(--highlight-violet);
+            }
+
+            .card-green {
+	            --card-accent: var(--highlight-green);
+            }
+
+            .callout {
+	            --callout-accent: var(--petrol-teal);
+	            --callout-background: var(--highlight-neutral-soft);
+	
+	            display: grid;
+	            grid-template-columns:
+		            max-content
+		            minmax(0, 1fr);
+		
+	            align-items: start;
+	            gap: var(--component-gap);
+	
+	            width: 100%;
+	            min-width: 0;
+	
+	            margin: 0 0 1.6cqh 0;
+	            padding: var(--component-padding);
+	
+	            border: 1px solid var(--border-content);
+	            border-left: 4px solid var(--callout-accent);
+	            border-radius: var(--component-radius);
+	
+	            background-color: var(--callout-background);
+            }
+
+            .callout:last-child {
+	            margin-bottom: 0;
+            }
+
+            .callout .component-symbol {
+	            color: var(--callout-accent);
+            }
+
+            .callout-content {
+	            min-width: 0;
+            }
+
+            .callout-content h3 {
+	            margin: 0 0 0.6cqh 0;
+	            color: var(--dark-teal);
+            }
+
+            .callout-content > :last-child {
+	            margin-bottom: 0;
+            }
+
+            .callout-violet {
+	            --callout-accent: var(--highlight-violet);
+	            --callout-background: var(--highlight-violet-soft);
+            }
+
+            .callout-green {
+	            --callout-accent: var(--highlight-green);
+	            --callout-background: var(--highlight-green-soft);
+            }
+
+            .evidence-panel {
+	            width: 100%;
+	            min-width: 0;
+	            padding: var(--component-padding);
+	            border: 1px solid var(--border-content);
+	            border-radius: var(--component-radius);
+	            background-color: var(--background-page);
+            }
+
+            .evidence-panel h3 {
+	            margin-bottom: 1.4cqh;
+            }
+
+            .mini-bar-chart {
+	            display: grid;
+	            gap: 1.1cqh;
+	            width: 100%;
+	            min-width: 0;
+            }
+
+            .mini-bar-row {
+	            display: grid;
+	            grid-template-columns:
+		            minmax(8rem, 0.9fr)
+		            minmax(0, 2fr)
+		            max-content;
+	            align-items: center;
+	            gap: 1cqw;
+	            min-width: 0;
+	            font-size: clamp(0.78rem, 1.65cqh, 1rem);
+            }
+
+            .mini-bar-label {
+	            min-width: 0;
+	            color: var(--dark-teal);
+	            font-weight: var(--font-weight-bold);
+	            overflow-wrap: anywhere;
+            }
+
+            .mini-bar-track {
+	            height: clamp(0.6rem, 1.2cqh, 0.85rem);
+	            min-width: 0;
+	            border-radius: 999px;
+	            background-color: var(--border-footer);
+	            overflow: hidden;
+            }
+
+            .mini-bar-fill {
+	            width: var(--bar-value);
+	            min-width: 2px;
+	            height: 100%;
+	            border-radius: inherit;
+	            background-color: var(--petrol-teal);
+            }
+
+            .mini-bar-fill.is-violet {
+	            background-color: var(--highlight-violet);
+            }
+
+            .mini-bar-fill.is-green {
+	            background-color: var(--highlight-green);
+            }
+
+            .mini-bar-value {
+	            font-family: var(--font-mono);
+	            font-size: 0.9em;
+	            white-space: nowrap;
+            }
+
+            .timeline {
+	            display: grid;
+	            grid-template-columns: 3fr 1fr 1fr;
+	            gap: 0.8cqw;
+	            width: 100%;
+	            margin-bottom: 2.2cqh;
+            }
+
+            .timeline-step {
+	            min-width: 0;
+	            padding: 1.3cqh 1.1cqw;
+	            border: 1px solid var(--border-content);
+	            border-top: 4px solid var(--timeline-accent, var(--petrol-teal));
+	            border-radius: var(--component-radius);
+	            background-color: var(--background-page);
+            }
+
+            .timeline-step strong {
+	            display: block;
+	            color: var(--dark-teal);
+	            font-size: clamp(1rem, 2.1cqh, 1.3rem);
+	            line-height: 1.2;
+	            margin-bottom: 0.3cqh;
+            }
+
+            .timeline-step span, .timeline-step small {
+	            display: block;
+	            color: var(--dark-gray);
+	            font-size: clamp(0.72rem, 1.55cqh, 0.92rem);
+	            line-height: 1.35;
+            }
+
+            .timeline-step small {
+	            opacity: 0.75;
+            }
+
+            .timeline-train {
+	            --timeline-accent: var(--petrol-teal);
+            }
+
+            .timeline-validation {
+	            --timeline-accent: var(--highlight-violet);
+            }
+
+            .timeline-test {
+	            --timeline-accent: var(--highlight-green);
+            }
+
+            @container presentation (max-width: 850px) {
+	            .card-grid-two, .card-grid-three, .card-grid-four, .timeline {
+		            grid-template-columns: minmax(0, 1fr);
+	            }
+	            .callout {
+		            grid-template-columns:
+			            max-content
+			            minmax(0, 1fr);
+	            }
+            }
+
+            @container presentation (max-width: 550px) {
+	            .mini-bar-row {
+		            grid-template-columns: minmax(0, 1fr);
+		            gap: 0.4cqh;
+	            }
+	            .callout {
+		            grid-template-columns: minmax(0, 1fr);
+	            }
+	            .callout .component-symbol {
+		            margin-bottom: 0.4cqh;
+	            }
+            }
+
+            .progress-bar {
+	            position: absolute;
+	            top: 0;
+	            left: 0;
+	            width: 0;
+	            height: var(--progress-height);
+	            background-color: var(--petrol-teal);
+	            z-index: 20;
+	            pointer-events: none;
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+	            .progress-bar {
+		            transition: width 0.25s ease;
+	            }
+            }
+
+            .footer {
+	            position: absolute;
+	            left: 0;
+	            right: 0;
+	            bottom: 0;
+	            height: var(--footer-height);
+	            z-index: 20;
+
+	            display: grid;
+	            grid-template-columns:
+		            minmax(0, 2fr)
+		            max-content
+		            max-content
+		            max-content;
+	            align-items: center;
+	            column-gap: clamp(1rem, 2.5cqw, 3rem);
+
+	            padding: 0 var(--slide-padding-inline);
+
+	            border-top: 1px solid var(--border-footer);
+	            background-color: var(--background-page);
+
+	            color: var(--dark-gray);
+	            font-family: var(--font-sans);
+	            font-size: var(--font-size-footer);
+	            font-weight: var(--font-weight-normal);
+            }
+
+            .footer-title {
+	            min-width: 0;
+	            overflow: hidden;
+	            text-overflow: ellipsis;
+	            white-space: nowrap;
+            }
+
+            .footer-date {
+	            white-space: nowrap;
+            }
+
+            .footer-hint {
+	            white-space: nowrap;
+	            opacity: 0.6;
+            }
+
+            .footer-navigation {
+	            display: flex;
+	            align-items: center;
+	            gap: 0.8rem;
+	            white-space: nowrap;
+            }
+
+            .slide-counter {
+	            font-family: var(--font-sans);
+	            font-variant-numeric: tabular-nums;
+            }
+
+            .navigation-buttons {
+	            display: inline-flex;
+	            align-items: center;
+	            gap: 0.4rem;
+            }
+
+            .navigation-button {
+	            display: inline-flex;
+	            align-items: center;
+	            justify-content: center;
+
+	            width: 2rem;
+	            height: 2rem;
+	            padding: 0;
+
+	            border: 1px solid var(--border-gray);
+	            border-radius: 50%;
+
+	            background-color: var(--border-footer);
+	            color: var(--dark-gray);
+
+	            font: inherit;
+	            font-size: 1.25rem;
+	            line-height: 1;
+
+	            cursor: pointer;
+            }
+
+            .navigation-button:hover:not(:disabled), .navigation-button:focus-visible:not(:disabled) {
+	            border-color: var(--petrol-teal);
+	            background-color: var(--petrol-teal);
+	            color: var(--background-page);
+            }
+
+            .navigation-button:focus-visible {
+	            outline: 2px solid var(--petrol-teal);
+	            outline-offset: 2px;
+            }
+
+            .navigation-button:disabled {
+	            border-color: var(--border-footer);
+	            background-color: var(--background-page);
+	            color: var(--dark-gray);
+	            opacity: 0.35;
+	            cursor: default;
+            }
+
+            @container presentation (max-width: 900px) {
+	            .footer {
+		            grid-template-columns:
+			            minmax(0, 1fr)
+			            max-content
+			            max-content;
+		            column-gap: clamp(0.75rem, 2cqw, 1.5rem);
+	            }
+	            .footer-hint {
+		            display: none;
+	            }
+            }
+
+            @page {
+	            size: 16in 9in;
+	            margin: 0;
+            }
+
+            @media print {
+	            html, body {
+		            width: 100%;
+		            height: auto;
+		            margin: 0;
+		            padding: 0;
+
+		            background-color: var(--background-page);
+		            overflow: visible;
+	            }
+	
+	            body {
+		            display: block;
+	            }
+	
+	            .presentation-stage {
+		            width: 16in;
+		            height: 9in;
+		            aspect-ratio: 16 / 9;
+		
+		            background-color: var(--background-page);
+		            overflow: visible;
+	            }
+	
+	            .slide {
+		            position: relative;
+		            inset: auto;
+		
+		            display: flex !important;
+		
+		            width: 16in;
+		            height: 9in;
+		
+		            break-after: page;
+		            page-break-after: always;
+		
+		            overflow: hidden;
+		
+		            animation: none !important;
+		            transition: none !important;
+		
+		            print-color-adjust: exact;
+		            -webkit-print-color-adjust: exact;
+	            }
+	
+	            .slide:last-of-type {
+		            break-after: auto;
+		            page-break-after: auto;
+	            }
+	
+	            .slide-content {
+		            overflow: hidden;
+	            }
+	
+	            .progress-bar, .footer {
+		            display: none !important;
+	            }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Presentation content -->
+        <main class="presentation-stage" aria-label="Präsentation">
+			<!-- Slide 1: Titelfolie -->
+			<section class="slide active title-closing-slide" aria-label="Folie 1: Titel">
+				<div class="slide-content">
+					<h1>EnergyCast-App</h1>
+
+					<p class="subtitle">
+						Stündliche Lastprognose für Deutschland mit dem QUA³CK-Prozessmodell.
+					</p>
+
+					<dl class="presentation-data">
+						<dt>Name</dt>
+						<dd>Niklas Schneider</dd>
+
+						<dt>Matrikelnummer</dt>
+						<dd>...</dd>
+
+						<dt>Modul</dt>
+						<dd>... - Data Analytics und Big Data</dd>
+
+						<dt>Präsentationsdatum</dt>
+						<dd><time datetime="2026-08-03">03.08.2026</time></dd>
+
+						<dt>Github-Repo</dt>
+						<dd><a href="https://github.com/NiklasSkulll/EnergyCast-App/" target="_blank" rel="noopener noreferrer">NiklasSkulll/EnergyCast-App</a></dd>
+					</dl>
+				</div>
+			</section>
+
+			<!-- Slide 2: Projektüberblick -->
+			<section class="slide" aria-label="Folie 2: Projektüberblick und Forschungsfrage">
+				<h2>Projektüberblick und Forschungsfrage</h2>
+
+				<p class="subtitle">
+					EnergyCast prognostiziert die stündliche nationale Stromlast in Deutschland für 2015-2019.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="card-grid card-grid-three">
+						<article class="card">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">?</span>
+								<h3>Ziel</h3>
+							</div>
+							<div class="card-content">
+								<p>Prognose der Zielvariable <code>DE_load_actual_entsoe_transparency</code> in MW.</p>
+							</div>
+						</article>
+
+						<article class="card card-violet">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">≤</span>
+								<h3>Kriterium</h3>
+							</div>
+							<div class="card-content">
+								<p><code>sMAPE &lt;= 5%</code> im einmalig verwendeten Testjahr 2019.</p>
+							</div>
+						</article>
+
+						<article class="card card-green">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">→</span>
+								<h3>Produkt</h3>
+							</div>
+							<div class="card-content">
+								<p>Reproduzierbare Pipeline und Streamlit-Anwendung für Szenarioanalysen.</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 3: Q -->
+			<section class="slide" aria-label="Folie 3: Q - Question">
+				<h2>Q - Question</h2>
+
+				<p class="subtitle">
+					Die Forschungsfrage wird als überwachtes Zeitreihen-Regressionsproblem formuliert.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="layout layout-two-column layout-60-40">
+						<div class="layout-column">
+							<ul>
+								<li>Beobachtungseinheit: eine stündliche Beobachtung der nationalen Last in Deutschland</li>
+								<li>Zielvariable: tatsächliche nationale Stromlast in MW</li>
+								<li>Prädiktoren: Wetter, erneuerbare Erzeugung, Kalender und historische Last</li>
+								<li>Vergleich mit 24-Stunden-Persistenz</li>
+								<li>Phase-Q-Notebook: <a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/notebooks/001_Q_Phase.ipynb" target="_blank" rel="noopener noreferrer">001_Q_Phase.ipynb</a></li>
+							</ul>
+						</div>
+
+						<div class="layout-column">
+							<aside class="callout callout-violet">
+								<span class="component-symbol" aria-hidden="true">!</span>
+								<div class="callout-content">
+									<h3>Zentrale Unsicherheit</h3>
+									<p>Der operative Prognosehorizont ist noch nicht vollständig festgelegt.</p>
+								</div>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 4: U -->
+			<section class="slide" aria-label="Folie 4: U - Understanding the Data">
+				<h2>U - Understanding the Data</h2>
+
+				<p class="subtitle">
+					Die Datenbasis wird sauber auf Deutschland und den Zeitraum 2015-2019 eingegrenzt.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="layout layout-two-column">
+						<div class="layout-column">
+							<ul>
+								<li>OPSD Time Series und OPSD Weather Data als Datengrundlage</li>
+								<li><code>43,824</code> stündliche Beobachtungen nach Zusammenführung über <code>utc_timestamp</code></li>
+								<li>Keine doppelten UTC-Zeitstempel und keine fehlenden UTC-Stunden</li>
+								<li>Lokale Zeit wird nur für Kalendereffekte verwendet</li>
+							</ul>
+						</div>
+
+						<div class="layout-column">
+							<aside class="callout">
+								<span class="component-symbol" aria-hidden="true">↗</span>
+								<div class="callout-content">
+									<h3>Live-Demo im Notebook</h3>
+									<p><a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/notebooks/002_U_Phase.ipynb" target="_blank" rel="noopener noreferrer">002_U_Phase.ipynb</a> - "Mean German load by weekday and local hour"</p>
+								</div>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 5: Datenmuster -->
+			<section class="slide" aria-label="Folie 5: Datenmuster und Datenqualität">
+				<h2>Datenmuster und Datenqualität</h2>
+
+				<p class="subtitle">
+					Die explorative Analyse zeigt typische Lastmuster und eine belastbare Datenbasis für die Modellierung.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="layout layout-two-column layout-60-40">
+						<div class="layout-column">
+							<div class="evidence-panel">
+								<h3>Prädiktorsignal im U-Notebook</h3>
+								<div class="mini-bar-chart" aria-label="Korrelation ausgewählter Prädiktoren mit der Zielvariable">
+									<div class="mini-bar-row">
+										<span class="mini-bar-label"><code>load_lag_1h</code></span>
+										<span class="mini-bar-track" aria-hidden="true">
+											<span class="mini-bar-fill is-green" style="--bar-value: 96.62%;"></span>
+										</span>
+										<span class="mini-bar-value">0.9662</span>
+									</div>
+									<div class="mini-bar-row">
+										<span class="mini-bar-label"><code>load_lag_168h</code></span>
+										<span class="mini-bar-track" aria-hidden="true">
+											<span class="mini-bar-fill" style="--bar-value: 91.05%;"></span>
+										</span>
+										<span class="mini-bar-value">0.9105</span>
+									</div>
+									<div class="mini-bar-row">
+										<span class="mini-bar-label"><code>load_lag_24h</code></span>
+										<span class="mini-bar-track" aria-hidden="true">
+											<span class="mini-bar-fill is-violet" style="--bar-value: 75.73%;"></span>
+										</span>
+										<span class="mini-bar-value">0.7573</span>
+									</div>
+									<div class="mini-bar-row">
+										<span class="mini-bar-label"><code>DE_temperature</code></span>
+										<span class="mini-bar-track" aria-hidden="true">
+											<span class="mini-bar-fill" style="--bar-value: 2.72%;"></span>
+										</span>
+										<span class="mini-bar-value">-0.0272</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="layout-column">
+							<ul>
+								<li>Höhere Last an Werktagen als an Wochenenden</li>
+								<li>Klare tägliche Morgenrampe und Tagesplateau</li>
+								<li>Höhere durchschnittliche Last in kälteren Monaten</li>
+								<li>Wetterdaten vollständig; kleinere Lücken bei Ziel- und Erneuerbaren-Variablen dokumentiert</li>
+							</ul>
+
+							<aside class="callout callout-green">
+								<span class="component-symbol" aria-hidden="true">✓</span>
+								<div class="callout-content">
+									<h3>Interpretation</h3>
+									<p>Historische Last ist der stärkste Kurzfrist-Prädiktor; Kalender, Wetter und erneuerbare Erzeugung ergänzen den Kontext.</p>
+								</div>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 6: A3 -->
+			<section class="slide" aria-label="Folie 6: A hoch 3 - Algorithmenentwicklung und Optimierung">
+				<h2>A<sup>3</sup> - Algorithmenentwicklung und Optimierung</h2>
+
+				<p class="subtitle">
+					Feature Engineering folgt der Leakage-Prüfung aus der Datenanalyse (siehe <a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/notebooks/003_A_Phase.ipynb" target="_blank" rel="noopener noreferrer">003_A_Phase.ipynb</a>).
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="card-grid card-grid-three">
+						<article class="card">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">1</span>
+								<h3>Zeitliche Aufteilung</h3>
+							</div>
+							<div class="card-content">
+								<p>Training: 2015-2017, Validierung: 2018, Test: 2019.</p>
+							</div>
+						</article>
+
+						<article class="card card-violet">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">2</span>
+								<h3>Features</h3>
+							</div>
+							<div class="card-content">
+								<p><code>22</code> Features: Kalendermerkmale, Last-Lags, Wetter-Lags und Lags der erneuerbaren Erzeugung.</p>
+							</div>
+						</article>
+
+						<article class="card card-green">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">3</span>
+								<h3>Auswahl</h3>
+							</div>
+							<div class="card-content">
+								<p>Auswahl über <code>TimeSeriesSplit</code> und 2018-sMAPE vor Nutzung des Testjahres.</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 7: Evaluationsdesign -->
+			<section class="slide" aria-label="Folie 7: Leakage-sicheres Evaluationsdesign">
+				<h2>Leakage-sicheres Evaluationsdesign</h2>
+
+				<p class="subtitle">
+					Die Modellauswahl bleibt zeitlich strikt vom finalen Testjahr getrennt.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="timeline" aria-label="Chronologische Aufteilung in Training, Validierung und Test">
+						<div class="timeline-step timeline-train">
+							<strong>Training</strong>
+							<span>2015-2017</span>
+							<small><code>26,135</code> Modellzeilen</small>
+						</div>
+
+						<div class="timeline-step timeline-validation">
+							<strong>Validierung</strong>
+							<span>2018</span>
+							<small>Modellauswahl nach sMAPE</small>
+						</div>
+
+						<div class="timeline-step timeline-test">
+							<strong>Finaler Test</strong>
+							<span>2019</span>
+							<small>Einmalige Bewertung</small>
+						</div>
+					</div>
+
+					<div class="card-grid card-grid-three">
+						<article class="card">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">↺</span>
+								<h3>Vergangenheitsbasierte Features</h3>
+							</div>
+							<div class="card-content">
+								<p>Last-, Wetter- und Erneuerbaren-Features werden vor der Nutzung zeitlich verschoben.</p>
+							</div>
+						</article>
+
+						<article class="card card-violet">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">∑</span>
+								<h3>Pipeline-Schutz</h3>
+							</div>
+							<div class="card-content">
+								<p>Imputation und Skalierung werden innerhalb der scikit-learn-Pipelines nur auf Trainingsdaten gelernt.</p>
+							</div>
+						</article>
+
+						<article class="card card-green">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">✓</span>
+								<h3>Testdisziplin</h3>
+							</div>
+							<div class="card-content">
+								<p>2019 wird erst nach festgelegter Modellwahl und Refit auf 2015-2018 ausgewertet.</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 8: Modellvergleich -->
+			<section class="slide" aria-label="Folie 8: Modellvergleich und Modellauswahl">
+				<h2>Modellvergleich und Modellauswahl</h2>
+
+				<p class="subtitle">
+					HistGradientBoosting liefert die beste Validierungsleistung und wird vor dem Testjahr 2019 festgelegt.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="table-wrapper">
+						<table>
+							<caption>Kompakter Vergleich auf Basis der dokumentierten Validierungs- und Testmetriken.</caption>
+							<thead>
+								<tr>
+									<th scope="col">Ansatz</th>
+									<th scope="col">2018 Validierung</th>
+									<th scope="col">2019 Test</th>
+									<th scope="col">Rolle</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row"><code>HistGradientBoosting regressor - full lagged feature set</code></th>
+									<td><code>0.7420%</code> sMAPE</td>
+									<td><code>0.7566%</code> sMAPE</td>
+									<td>Final ausgewählt</td>
+								</tr>
+								<tr>
+									<th scope="row"><code>XGBoost regressor - full lagged feature set</code></th>
+									<td><code>0.7885%</code> sMAPE</td>
+									<td><code>0.7769%</code> sMAPE</td>
+									<td>Bester Vergleichskandidat</td>
+								</tr>
+								<tr>
+									<th scope="row"><code>Random Forest regressor - full lagged feature set</code></th>
+									<td><code>0.8623%</code> sMAPE</td>
+									<td><code>0.8018%</code> sMAPE</td>
+									<td>Robuste Referenz</td>
+								</tr>
+								<tr>
+									<th scope="row"><code>24h naive persistence</code></th>
+									<td><code>8.3684%</code> sMAPE</td>
+									<td><code>8.4171%</code> sMAPE</td>
+									<td>Pflicht-Baseline</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<aside class="callout callout-violet">
+						<span class="component-symbol" aria-hidden="true">↗</span>
+						<div class="callout-content">
+							<h3>Live-Demo im Notebook</h3>
+							<ul>
+								<li><a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/notebooks/003_A_Phase.ipynb" target="_blank" rel="noopener noreferrer">003_A_Phase.ipynb</a> - "2018 validation sMAPE by A-phase regression candidate"</li>
+								<li><a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/models/003_A_Phase_candidate_model_metadata.json" target="_blank" rel="noopener noreferrer">003_A_Phase_candidate_model_metadata.json</a> - Werte des besten Modells</li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+			</section>
+
+			<!-- Slide 9: C -->
+			<section class="slide" aria-label="Folie 9: C - Conclude und Compare">
+				<h2>C - Conclude &amp; Compare</h2>
+
+				<p class="subtitle">
+					Nach dem Refit auf 2015-2018 erfüllt das finale Modell alle zentralen Kriterien.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="card-grid card-grid-four metric-card-grid">
+						<article class="card card-green">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">%</span>
+								<h3><code>0.7566%</code></h3>
+							</div>
+							<div class="card-content">
+								<p>sMAPE im Testjahr 2019</p>
+							</div>
+						</article>
+
+						<article class="card">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">R</span>
+								<h3><code>540.7 MW</code></h3>
+							</div>
+							<div class="card-content">
+								<p>RMSE im Testjahr 2019</p>
+							</div>
+						</article>
+
+						<article class="card">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">A</span>
+								<h3><code>412.9 MW</code></h3>
+							</div>
+							<div class="card-content">
+								<p>MAE im Testjahr 2019</p>
+							</div>
+						</article>
+					</div>
+
+					<aside class="callout callout-green">
+						<span class="component-symbol" aria-hidden="true">✓</span>
+						<div class="callout-content">
+							<h3>Testfazit</h3>
+							<p><code>R² = 0.9970</code> und <code>91.0115%</code> niedrigere sMAPE als die 24-Stunden-Persistenz.</p>
+						</div>
+					</aside>
+				</div>
+			</section>
+
+			<!-- Slide 10: Fehleranalyse -->
+			<section class="slide" aria-label="Folie 10: Fehleranalyse und Limitationen">
+				<h2>Fehleranalyse und Limitationen</h2>
+
+				<p class="subtitle">
+					Die Jahreskennzahl ist stark, aber operative Einschränkungen bleiben wichtig.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="layout layout-two-column layout-60-40">
+						<div class="layout-column">
+							<ul>
+								<li>Mittlerer Bias: <code>-13.6282 MW</code></li>
+								<li>Höchster Monatsfehler: Dezember mit <code>0.9061%</code> sMAPE</li>
+								<li>Fehler steigen besonders während der Morgenrampe</li>
+								<li>Wochenenden: <code>0.8561%</code> sMAPE gegenüber <code>0.7169%</code> an Werktagen</li>
+							</ul>
+						</div>
+
+						<div class="layout-column">
+							<aside class="callout callout-violet">
+								<span class="component-symbol" aria-hidden="true">↗</span>
+								<div class="callout-content">
+									<h3>Live-Demo im Notebook</h3>
+									<p><a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/notebooks/004_C_Phase.ipynb" target="_blank" rel="noopener noreferrer">004_C_Phase.ipynb</a> - "Selected model residual distribution on 2019 test year"</p>
+								</div>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 11: K -->
+			<section class="slide" aria-label="Folie 11: K - Wissenstransfer">
+				<h2>K - Wissenstransfer</h2>
+
+				<p class="subtitle">
+					Das Projekt wird von der Analyse in eine nutzbare Szenarioanwendung übertragen.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="card-grid card-grid-three">
+						<article class="card">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">↻</span>
+								<h3>Pipeline</h3>
+							</div>
+							<div class="card-content">
+								<p>Gleiche Lag-Feature-Struktur wie in der Modellbewertung.</p>
+							</div>
+						</article>
+
+						<article class="card card-violet">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">✓</span>
+								<h3>Reproduktion</h3>
+							</div>
+							<div class="card-content">
+								<p>Die App-Pipeline reproduziert die 2019-Metriken innerhalb enger Toleranzen.</p>
+							</div>
+						</article>
+
+						<article class="card card-green">
+							<div class="card-header">
+								<span class="component-symbol" aria-hidden="true">→</span>
+								<h3>Nutzung</h3>
+							</div>
+							<div class="card-content">
+								<p>Lokaler Start mit <code>uv run streamlit run app/streamlit_app.py</code>. (<a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/notebooks/005_K_Phase.ipynb" target="_blank" rel="noopener noreferrer">005_K_Phase.ipynb</a>)</p>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 12: Streamlit -->
+			<section class="slide" aria-label="Folie 12: Streamlit-Szenarioanwendung">
+				<h2>Streamlit-Szenarioanwendung</h2>
+
+				<p class="subtitle">
+					Die Anwendung erstellt Zukunftsszenarien für Zeitpunkte von 2020 bis 2030.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="layout layout-two-column">
+						<div class="layout-column">
+							<ul>
+								<li>Startdatum, Startstunde und Prognosehorizont wählbar</li>
+								<li>Prognosehorizonte: 24 Stunden, 48 Stunden, 7 Tage oder 30 Tage</li>
+								<li>Szenarioannahmen für Nachfragewachstum, Temperatur und erneuerbare Erzeugung</li>
+								<li>Tabs: <code>Scenario Forecast</code>, <code>Generated Inputs</code>, <code>Assumptions</code></li>
+							</ul>
+						</div>
+
+						<div class="layout-column">
+							<aside class="callout callout-green">
+								<span class="component-symbol" aria-hidden="true">↗</span>
+								<div class="callout-content">
+									<h3>Live-Demo der App</h3>
+									<p><a href="https://energycast-app.streamlit.app/" target="_blank" rel="noopener noreferrer">EnergyCast-App</a></p>
+								</div>
+							</aside>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 13: Fazit -->
+			<section class="slide" aria-label="Folie 13: Fazit und nächste Schritte">
+				<h2>Fazit und nächste Schritte</h2>
+
+				<p class="subtitle">
+					EnergyCast zeigt eine stabile, reproduzierbare Lastprognose mit klaren nächsten Schritten.
+				</p>
+
+				<div class="slide-content centered-content">
+					<div class="layout layout-two-column layout-40-60">
+						<div class="layout-column">
+							<aside class="callout callout-green">
+								<span class="component-symbol" aria-hidden="true">✓</span>
+								<div class="callout-content">
+									<h3>Kernaussage</h3>
+									<p>Das finale Modell unterschreitet die 5%-Schwelle deutlich und schlägt alle Baselines.</p>
+								</div>
+							</aside>
+						</div>
+
+						<div class="layout-column">
+							<ul>
+								<li>Operativen Prognosehorizont explizit definieren</li>
+								<li>Live-Lastdaten, Wetterprognosen und Prognosen zur erneuerbaren Erzeugung anbinden</li>
+								<li>Messdaten nach 2019 zur externen Validierung ergänzen</li>
+								<li>Optional dokumentierte Feiertags-Features hinzufügen</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Slide 14: Abschluss -->
+			<section class="slide title-closing-slide" aria-label="Folie 14: Abschluss">
+				<div class="slide-content">
+					<h2>Vielen Dank</h2>
+
+					<dl class="presentation-data">
+						<dt>Name</dt>
+						<dd>Niklas Schneider</dd>
+
+						<dt>Matrikelnummer</dt>
+						<dd>...</dd>
+
+						<dt>Studiengang</dt>
+						<dd>Informatik</dd>
+
+						<dt>Modul</dt>
+						<dd>... - Data Analytics und Big Data</dd>
+					</dl>
+				</div>
+			</section>
+
+			<!-- Fortschrittsanzeige -->
+			<div
+				class="progress-bar"
+				id="progress-bar"
+				role="progressbar"
+				aria-label="Präsentationsfortschritt"
+				aria-valuemin="1"
+				aria-valuemax="14"
+				aria-valuenow="1">
+			</div>
+
+			<!-- Footer -->
+			<footer class="footer">
+				<div class="footer-title">
+					EnergyCast-App - Data Analytics und Big Data
+				</div>
+
+				<time class="footer-date" datetime="2026-08-03">
+					03.08.2026
+				</time>
+
+				<div class="footer-hint">
+					Pfeiltasten/Enter/Backspace oder Buttons
+				</div>
+
+				<div class="footer-navigation">
+					<span class="slide-counter" id="slide-counter" aria-live="polite">01 / 14</span>
+
+					<div class="navigation-buttons">
+						<button class="navigation-button" id="previous-slide" type="button" aria-label="Vorherige Folie" disabled>&#8249;</button>
+						<button class="navigation-button" id="next-slide" type="button" aria-label="Nächste Folie">&#8250;</button>
+					</div>
+				</div>
+			</footer>
+		</main>
+
+        <!-- JavaScript -->
+        <script>
+	        function initializePresentationNavigation() {
+		        const slides = Array.from(
+			        document.querySelectorAll(".slide")
+		        );
+
+		        const progressBar =
+			        document.getElementById("progress-bar");
+
+		        const slideCounter =
+			        document.getElementById("slide-counter");
+
+		        const previousButton =
+			        document.getElementById("previous-slide");
+
+		        const nextButton =
+			        document.getElementById("next-slide");
+
+		        if (
+			        slides.length === 0 ||
+			        !progressBar ||
+			        !slideCounter ||
+			        !previousButton ||
+			        !nextButton
+		        ) {
+			        return;
+		        }
+
+		        const initiallyActiveSlide = slides.findIndex(
+			        (slide) => slide.classList.contains("active")
+		        );
+
+		        let currentSlideIndex =
+			        initiallyActiveSlide >= 0
+				        ? initiallyActiveSlide
+				        : 0;
+
+		        function formatSlideNumber(value, total) {
+			        const width = Math.max(
+				        2,
+				        String(total).length
+			        );
+
+			        return String(value).padStart(width, "0");
+		        }
+
+		        function updatePresentation() {
+			        const totalSlides = slides.length;
+			        const currentSlideNumber =
+				        currentSlideIndex + 1;
+
+			        slides.forEach((slide, index) => {
+				        slide.classList.toggle(
+					        "active",
+					        index === currentSlideIndex
+				        );
+			        });
+
+			        slideCounter.textContent =
+				        `${formatSlideNumber(
+					        currentSlideNumber,
+					        totalSlides
+				        )} / ` +
+				        formatSlideNumber(
+					        totalSlides,
+					        totalSlides
+				        );
+
+			        const progressPercentage =
+				        (currentSlideNumber / totalSlides) * 100;
+
+			        progressBar.style.width =
+				        `${progressPercentage}%`;
+
+			        progressBar.setAttribute(
+				        "aria-valuemax",
+				        totalSlides
+			        );
+
+			        progressBar.setAttribute(
+				        "aria-valuenow",
+				        currentSlideNumber
+			        );
+
+			        previousButton.disabled =
+				        currentSlideIndex === 0;
+
+			        nextButton.disabled =
+				        currentSlideIndex === totalSlides - 1;
+		        }
+
+		        function goToSlide(index) {
+			        currentSlideIndex = Math.min(
+				        Math.max(index, 0),
+				        slides.length - 1
+			        );
+
+			        updatePresentation();
+		        }
+
+		        function showPreviousSlide() {
+			        goToSlide(currentSlideIndex - 1);
+		        }
+
+		        function showNextSlide() {
+			        goToSlide(currentSlideIndex + 1);
+		        }
+
+		        function isInteractiveTarget(target) {
+			        return Boolean(
+				        target &&
+				        typeof target.closest === "function" &&
+				        target.closest(
+					        "a, button, input, textarea, select, " +
+					        '[contenteditable]:not([contenteditable="false"])'
+				        )
+			        );
+		        }
+
+		        function handleKeydown(event) {
+			        if (
+				        event.defaultPrevented ||
+				        event.altKey ||
+				        event.ctrlKey ||
+				        event.metaKey ||
+				        isInteractiveTarget(event.target)
+			        ) {
+				        return;
+			        }
+
+			        switch (event.key) {
+				        case "ArrowLeft":
+				        case "Backspace":
+					        event.preventDefault();
+					        showPreviousSlide();
+					        break;
+
+				        case "ArrowRight":
+				        case "Enter":
+					        event.preventDefault();
+					        showNextSlide();
+					        break;
+			        }
+		        }
+
+		        previousButton.addEventListener(
+			        "click",
+			        showPreviousSlide
+		        );
+
+		        nextButton.addEventListener(
+			        "click",
+			        showNextSlide
+		        );
+
+		        document.addEventListener(
+			        "keydown",
+			        handleKeydown
+		        );
+
+		        updatePresentation();
+	        }
+
+	        initializePresentationNavigation();
+        </script>
+    </body>
+</html>
