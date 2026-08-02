@@ -172,4 +172,4 @@ Recommended next steps are to define the production forecast horizon explicitly,
 
 # Finished Product
 
-[Open the Streamlit application](STREAMLIT_APP_LINK)
+**Open the Streamlit application:** [https://energycast-app.streamlit.app/](https://energycast-app.streamlit.app/)

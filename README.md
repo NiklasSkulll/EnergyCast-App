@@ -15,7 +15,7 @@
 
 The selected model is a `HistGradientBoostingRegressor` trained on 2015-2018 OPSD data and validated on the unseen 2019 holdout year. The Streamlit app is not a model-statistics dashboard: it uses the trained model to forecast future hourly load from generated scenario inputs.
 
-**Streamlit scenario forecast app:** []()
+**Streamlit scenario forecast app:** [https://energycast-app.streamlit.app/](https://energycast-app.streamlit.app/)
 
 </div>
 
