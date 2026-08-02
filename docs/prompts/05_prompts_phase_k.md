@@ -213,3 +213,165 @@ Look at my README.md. It got longer not updated. ANalyze my whole project and up
 - setup git lfs and pull the objects by first clone
 - start the app and stop the run
 ```
+
+## Prompt for creating a summary
+
+**GPT-5.2-Codex [AI_TOOL_DISCLOSURE.md](AI_TOOL_DISCLOSURE.md):**
+```markdown
+You have access to the complete project repository. Analyze the project and create a clear, accurate, and reader-friendly project summary based on the repository’s actual contents.
+
+## Objective
+
+Write the finished summary directly to:
+
+```text
+docs/overview_summary.md
+```
+
+The file is currently empty and should be replaced with the completed Markdown document.
+
+## Analysis Scope
+
+Review the entire repository, including:
+
+* the repository structure
+* `README` and other documentation files
+* configuration and dependency files
+* source code
+* the Streamlit application
+* data-related files and scripts
+* all notebooks inside `notebooks/`
+
+The notebooks have already been executed and contain saved outputs. Use both their Markdown explanations and their visible outputs, including:
+
+* tables
+* metrics
+* charts
+* model results
+* comparisons
+* observations
+* conclusions
+
+Do not rerun the notebooks unless this is necessary to understand the project. Treat the saved notebook outputs as the primary source for reported results.
+
+## Methodology
+
+Organize the project summary according to the **QUA³CK process model**:
+
+* **Q — Question:** problem, research question, target audience, success criteria, and intended product
+* **U — Understanding the Data:** dataset, variables, data quality, preparation, exploratory analysis, patterns, and important findings
+* **A³ — Algorithm Selection, Adapting Features, and Adjusting Hyperparameters:** feature preparation, models tested, training approach, experiments, optimization, and iteration
+* **C — Conclude & Compare:** evaluation metrics, model comparison, selected solution, strengths, weaknesses, and reasons for the final choice
+* **K — Knowledge Transfer:** deployment, Streamlit application, documentation, reproducibility, practical use, and possible next steps
+
+Base every section on evidence found in the repository. Do not invent missing project details, results, metrics, or decisions. When something is unclear or undocumented, state that explicitly.
+
+## Required Document Structure
+
+Use the following structure:
+
+```markdown
+# Project Summary
+
+## Overview
+
+Provide a concise explanation of:
+
+- what the project does
+- which problem it addresses
+- which data and methods it uses
+- what the final result or product is
+
+## Phase Q — Question
+
+Explain the original problem, project objective, target audience, success criteria, and intended outcome.
+
+## Phase U — Understanding the Data
+
+Explain the dataset, relevant variables, data quality, preparation steps, exploratory analysis, visual findings, and the most important insights.
+
+## Phase A³ — Algorithm Development and Optimization
+
+### Algorithm Selection
+
+Explain which algorithms or approaches were evaluated and why they were appropriate.
+
+### Adapting Features
+
+Explain feature selection, transformations, preprocessing, encoding, scaling, or feature engineering performed in the project.
+
+### Adjusting Hyperparameters
+
+Explain tuning, experimentation, validation, iteration, and any changes made to improve the models.
+
+## Phase C — Conclude & Compare
+
+Summarize the results of each evaluated approach.
+
+Include a compact Markdown comparison table when the repository contains enough information, for example:
+
+| Model or Approach | Main Metrics | Strengths | Limitations |
+|---|---:|---|---|
+
+Explain:
+
+- which approach performed best
+- which evaluation criteria were used
+- whether the project met its success criteria
+- why the final solution was selected
+- any important limitations or uncertainties
+
+## Phase K — Knowledge Transfer
+
+Explain how the results were turned into a usable product or communicated to others.
+
+Cover relevant elements such as:
+
+- the Streamlit application
+- model integration
+- user workflow
+- documentation
+- reproducibility
+- deployment
+- practical value
+- recommended next steps
+
+# Finished Product
+
+[Open the Streamlit application](STREAMLIT_APP_LINK)
+```
+
+Keep `STREAMLIT_APP_LINK` as a placeholder unless an actual deployment URL exists in the repository.
+
+## Writing Requirements
+
+* Write for readers who understand basic data science but may not know this project.
+* Use simple, professional language.
+* Explain technical decisions rather than merely listing them.
+* Focus on the project-specific process and findings.
+* Clearly connect notebook outputs to the corresponding QUA³CK phase.
+* Report exact metrics when they are available.
+* Avoid unsupported claims and generic textbook explanations.
+* Do not copy notebook content verbatim; synthesize it into a coherent narrative.
+* Use concise paragraphs, meaningful headings, and Markdown tables where useful.
+* Preserve important model names, dataset names, feature names, and metric values exactly as shown in the project.
+* Do not include code unless a very short excerpt is essential for understanding the project.
+* Do not describe files one by one. Present the repository as one coherent project.
+
+## Final Verification
+
+Before finishing:
+
+1. Confirm that all relevant notebooks were reviewed.
+2. Verify every numerical result against the saved notebook outputs.
+3. Confirm that all five QUA³CK phases are covered.
+4. Check that no unsupported information was added.
+5. Ensure the Markdown is readable and correctly formatted.
+6. Save the completed document to `docs/overview_summary.md`.
+
+At the end of your response, briefly report:
+
+* that `docs/overview_summary.md` was updated
+* which repository materials were used
+* any important information that could not be determined from the repository
+```

@@ -3,7 +3,7 @@
 > **Information:**
 > - The content of this file is a summary of a YouTube Video from Su (2025)
 >
-> - Su, J. [Jeff Su]. (2025, July 15). Master data analysis with ChatGPT (in just 12 minutes) [Video]. YouTube. https://www.youtube.com/watch?v=FKLr3ft8ea0
+> - Su, J. [Jeff Su]. (2025). Master data analysis with ChatGPT (in just 12 minutes) [Video]. YouTube. https://www.youtube.com/watch?v=FKLr3ft8ea0
 
 ## Obsidian Notes for Big Data and Data Analytics
 

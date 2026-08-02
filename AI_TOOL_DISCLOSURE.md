@@ -9,12 +9,12 @@
 
 ## Overview
 
-This document describes the use of AI-based tools within the context of this project with machine learning algorithms. The outline follows the QUA3CK process model to illustrate which tools were used for what purpose at each phase of the project.
+This document describes the use of AI-based tools within the context of this project with machine learning algorithms. The outline follows the QUA³CK process model to illustrate which tools were used for what purpose at each phase of the project.
 
-The QUA3CK model is an iterative process for developing ML solutions. It stands for:
+The QUA³CK model is an iterative process for developing ML solutions. It stands for:
 - **Q**: Question
 - **U**: Understanding
-- **A3**: **A**lgorithm Selection, Data **A**daptation, Parameter **A**djustment
+- **A³**: **A**lgorithm Selection, Data **A**daptation, Parameter **A**djustment
 - **C**: Conclusion & Comparison
 - **K**: Knowledge Transfer
 
@@ -24,10 +24,13 @@ The QUA3CK model is an iterative process for developing ML solutions. It stands 
 
 ## Detailed overview of the AI tools used in each phase
 
-| **Phase**   | **AI-Tool**                                                                                                             | **Purpose**                                                                                                                         | **Prompt/Use Case**                                                           |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **Phase Q** | ChatGPT 5.5 Thinking (OpenAI, 2026), GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025), Claude Sonnet 4.6 (Anthropic, 2026) | Data set research, concept of the Q phase in a Jupyter notebook, creation of `AGENTS.md` and `README.md`                            | view [docs/prompts/01_prompts_phase_q.md](docs/prompts/01_prompts_phase_q.md) |
-| **Phase U** | GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025)                                                                           | Data analysis, Creating venv, Concept the U phase in a Jupyter notebook, Error fixing, Updating `README.md`, Creating `GLOSSARY.md` | view [docs/prompts/02_prompts_phase_u.md](docs/prompts/02_prompts_phase_u.md) |
+| **Phase**    | **AI-Tool**                                                                                                             | **Purpose**                                                                                                                         | **Prompt/Use Case**                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Phase Q**  | ChatGPT 5.5 Thinking (OpenAI, 2026), GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025), Claude Sonnet 4.6 (Anthropic, 2026) | Data set research, concept of the Q phase in a Jupyter notebook, creation of `AGENTS.md` and `README.md`                            | view [docs/prompts/01_prompts_phase_q.md](docs/prompts/01_prompts_phase_q.md) |
+| **Phase U**  | GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025)                                                                           | Data analysis, Creating venv, Concept the U phase in a Jupyter notebook, Error fixing, Updating `README.md`, Creating `GLOSSARY.md` | view [docs/prompts/02_prompts_phase_u.md](docs/prompts/02_prompts_phase_u.md) |
+| **Phase A³** | GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025)                                                                           | Create the A³ phase in a Jupyter notebook, Error fixing                                                                             | view [docs/prompts/03_prompts_phase_a.md](docs/prompts/03_prompts_phase_a.md) |
+| **Phase C**  | GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025)                                                                           | Create the C phase in a Jupyter notebook, Updating MCP Serena                                                                       | view [docs/prompts/04_prompts_phase_c.md](docs/prompts/04_prompts_phase_c.md) |
+| **Phase K**  | GitHub Copilot (GPT-5.2-Codex) (OpenAI, 2025)                                                                           | Create the K phase in a Jupyter notebook, Creating the streamlit app implementation, Updating `README.md` and MCP Serena            | view [docs/prompts/05_prompts_phase_k.md](docs/prompts/05_prompts_phase_k.md) |
 
 ---
 
@@ -35,18 +38,22 @@ The QUA3CK model is an iterative process for developing ML solutions. It stands 
 
 The datasets listed below were used as part of the project. All of them are publicly available on the "Open Power System Data" website (Open Power System Data, n.d.).
 
-| **Data set**                  | **Source**                      | **Description**                                                                                             | **Purpose** |
-| ----------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------- |
-| **Data package time series**  | (Open Power System Data, 2020a) | Load, wind and solar, prices in hourly resolution from 2015 up to 2019                                      |             |
-| **Data package weather data** | (Open Power System Data, 2020b) | Hourly geographically aggregated weather data for Europe, include radiation and temperature data up to 2019 |             |
+| **Data set**                  | **Source**                                                                                             | **Description**                                                                                             |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| **Data package time series**  | (Bundesnetzagentur, n.d.; ENTSO-E, 2023; Open Power System Data, 2020a)                                | Load, wind and solar, prices in hourly resolution from 2015 up to 2019                                      |
+| **Data package weather data** | (Global Modeling and Assimilation Office, n.d.; Open Power System Data, 2020b; Renewables.ninja, 2018) | Hourly geographically aggregated weather data for Europe, include radiation and temperature data up to 2019 |
 
 ---
 
 ## Bibliography
 
 - Anthropic. (2026). _Claude Sonnet 4.6_ [Large language model]. https://www.anthropic.com/claude/sonnet
+- Bundesnetzagentur. (n.d.). Statistiken erneuerbarer Energieträger [Data portal]. https://www.bundesnetzagentur.de/DE/Fachthemen/ElektrizitaetundGas/ErneuerbareEnergien/EE-Statistik/start.html
+- ENTSO-E. (2023). *ENTSO-E Transparency Platform* [Data platform]. European Network of Transmission System Operators for Electricity. https://transparency.entsoe.eu
+- Global Modeling and Assimilation Office. (n.d.). Modern-Era Retrospective analysis for Research and Applications, Version 2 (MERRA-2) [Data set]. National Aeronautics and Space Administration. https://gmao.gsfc.nasa.gov/gmao-products/merra-2/
 - OpenAI. (2025). _GPT-5.2-Codex_ [Large language model]. GitHub Copilot in Visual Studio Code. https://openai.com/index/introducing-gpt-5-2-codex/
 - OpenAI. (2026). _ChatGPT 5.5 Thinking_ [Large language model]. https://chatgpt.com/
 - Open Power System Data. (n.d.). _Open Power System Data: A platform for open data of the European power system_. https://open-power-system-data.org/
 - Open Power System Data. (2020a). _Data package time series_ (Version 2020-10-06) [Data set]. https://doi.org/10.25832/time_series/2020-10-06
 - Open Power System Data. (2020b). _Data package weather data_ (Version 2020-09-16) [Data set]. https://doi.org/10.25832/weather_data/2020-09-16
+- Renewables.ninja. (2018). Raw weather data [Data set documentation]. https://www.renewables.ninja/news/raw-weather-data
