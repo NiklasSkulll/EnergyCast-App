@@ -223,10 +223,7 @@ You have access to the complete project repository. Analyze the project and crea
 ## Objective
 
 Write the finished summary directly to:
-
-```text
-docs/overview_summary.md
-```
+- docs/overview_summary.md
 
 The file is currently empty and should be replaced with the completed Markdown document.
 
@@ -270,7 +267,7 @@ Base every section on evidence found in the repository. Do not invent missing pr
 
 Use the following structure:
 
-```markdown
+"""
 # Project Summary
 
 ## Overview
@@ -339,7 +336,7 @@ Cover relevant elements such as:
 # Finished Product
 
 [Open the Streamlit application](STREAMLIT_APP_LINK)
-```
+"""
 
 Keep `STREAMLIT_APP_LINK` as a placeholder unless an actual deployment URL exists in the repository.
 
@@ -374,4 +371,11 @@ At the end of your response, briefly report:
 * that `docs/overview_summary.md` was updated
 * which repository materials were used
 * any important information that could not be determined from the repository
+```
+
+## Prompt for updating a the AGENTS.md
+
+**GPT-5.2-Codex [AI_TOOL_DISCLOSURE.md](AI_TOOL_DISCLOSURE.md):**
+```markdown
+Thanks. Now Look at my project. I forgot to update the AGENTS.md file. Look at it and update it with the overall current state
 ```
