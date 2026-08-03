@@ -1116,6 +1116,10 @@
 				</p>
 
 				<div class="slide-content centered-content">
+					<ul>
+						<li>Stromdaten: <a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/data/raw/time_series_60min_singleindex.csv" target="_blank" rel="noopener noreferrer">time_series_60min_singleindex.csv</a> (Bundesnetzagentur, n.d.; ENTSO-E, 2023; Open Power System Data, 2020a)</li>
+						<li>Wetterdaten: <a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/data/raw/weather_data.csv" target="_blank" rel="noopener noreferrer">weather_data.csv</a> (Global Modeling and Assimilation Office, n.d.; Open Power System Data, 2020b; Renewables.ninja, 2018)</li>
+					</ul>
 					<div class="card-grid card-grid-three">
 						<article class="card">
 							<div class="card-header">
@@ -1123,7 +1127,7 @@
 								<h3>Ziel</h3>
 							</div>
 							<div class="card-content">
-								<p>Prognose der Zielvariable <code>DE_load_actual_entsoe_transparency</code> in MW.</p>
+								<p>Prognose der Zielvariable <code>DE_load_actual_entsoe_transparency</code> (stündliche nationale Stromlast) in MW.</p>
 							</div>
 						</article>
 
@@ -1164,7 +1168,7 @@
 							<ul>
 								<li>Beobachtungseinheit: eine stündliche Beobachtung der nationalen Last in Deutschland</li>
 								<li>Zielvariable: tatsächliche nationale Stromlast in MW</li>
-								<li>Prädiktoren: Wetter, erneuerbare Erzeugung, Kalender und historische Last</li>
+								<li>Prädikatoren: Wetter, erneuerbare Erzeugung, Kalender und historische Last</li>
 								<li>Vergleich mit 24-Stunden-Persistenz</li>
 								<li>Phase-Q-Notebook: <a href="https://github.com/NiklasSkulll/EnergyCast-App/blob/main/notebooks/001_Q_Phase.ipynb" target="_blank" rel="noopener noreferrer">001_Q_Phase.ipynb</a></li>
 							</ul>
